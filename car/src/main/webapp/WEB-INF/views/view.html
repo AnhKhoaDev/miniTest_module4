@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="/layout :: head">
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>Detail Car</title>
+</head>
+<body>
+<h3>View Car</h3>
+<p>
+    <a th:href="@{/cars}">
+        Back to car list
+    </a>
+</p>
+<div id="detail">
+    <div class="cus-detail">
+        <label>Code:</label>
+        <label th:text="${car.code}"></label>
+    </div>
+    <div class="cus-detail">
+        <label>Name:</label>
+        <label th:text="${car.name}"></label>
+    </div>
+    <div class="cus-detail">
+        <label>Producer:</label>
+        <label th:text="${car.producer}"></label>
+    </div>
+    <div class="cus-detail">
+        <label>Price:</label>
+        <label th:text="${car.price}"></label>
+    </div>
+    <div class="cus-detail">
+        <label>Description:</label>
+        <label th:text="${car.description}"></label>
+    </div>
+    <div class="cus-detail">
+        <label>Image</label>
+        <img style="width: 100px; height: auto" id="img" th:src="@{'/i/'+${car.img}}" alt="Car Image"/>
+    </div>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>

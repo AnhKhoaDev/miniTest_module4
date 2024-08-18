@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="/layout :: head">
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>List Car</title>
+</head>
+<body>
+<h3>Cars</h3>
+<p>
+    <a th:href="@{/cars/create}">
+        Add new car
+    </a>
+</p>
+
+<div class="notify">
+    <div th:if="${success}">
+        <span th:text="${success}"></span>
+    </div>
+</div>
+
+<table id="form">
+    <thead>
+    <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Producer</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Image</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>View</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="row,rowStat : ${cars}">
+        <td th:text="${row.getCode()}"></td>
+        <td th:text="${row.getName()}"></td>
+        <td th:text="${row.getProducer()}"></td>
+        <td th:text="${row.getPrice()}"></td>
+        <td th:text="${row.getDescription()}"></td>
+        <td><img style="width: 100px; height: auto" th:src="@{'/i/'+${row.getImg()}}" alt="IMG"></td>
+        <td><a th:href="@{/cars/{id}/update(id=${row.getId()})}">edit</a></td>
+        <td><a th:href="@{/cars/{id}/delete(id=${row.getId()})}">delete</a></td>
+        <td><a th:href="@{/cars/{id}/view(id=${row.getId()})}">view</a></td>
+    </tr>
+    </tbody>
+</table>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>
